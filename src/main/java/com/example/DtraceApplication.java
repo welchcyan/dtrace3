@@ -21,6 +21,8 @@ public class DtraceApplication {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@Value("${hello.signature:default}")
+	private String sig;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DtraceApplication.class, args);
@@ -29,7 +31,7 @@ public class DtraceApplication {
 	@RequestMapping("/")
 	public String home() {
 		LOG.log(Level.INFO, "you called service4");
-		return "final call ";
+		return "final call "+sig;
 	}
 
 
